@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+
+        <title>Change the lights!</title>
+    </head>
+    <body>
+        <header>
+          <img id= "profile" src = "assets/IMG_0520.JPG">
+          <h1>Hue API for 192.168.1.2</h1>
+        </header>
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <div>Living Room</div>
+            <div class = "state" id = "oneS"> Current State: </div>
+            <input class="slider" id = "slider1" type="range" title="transition" max="256" value="0" step="1">
+            <button class = "1 on btn btn-primary btn-lg btn-block" id = "on1">Turn Light 1 on/off</button>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div>Matt's Room</div>
+            <div class = "state" id = "twoS"> Current State: </div>
+            <input class="slider" type="range" title="transition" max="256" value="0" step="1">
+            <button class = "2 on btn btn-primary btn-lg btn-block" id = "on2">Turn Light 2 on/off</button>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div>Tom's Room</div>
+            <div class = "state" id = "threeS"> Current State: </div>
+            <input class="slider" type="range" title="transition" max="256" value="0" step="1">
+            <button class = "4 on btn btn-primary btn-lg btn-block" id = "on3">Turn Light 4 on/off</button>
+          </div>
+        </div>
+
+        <!-- green lights -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <button class = "1 green btn btn-primary btn-lg btn-block" id = "green1">Green</button>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <button class = "2 green btn btn-primary btn-lg btn-block" id = "green2">Green</button>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <button class = "4 green btn btn-primary btn-lg btn-block" id = "green3">Green</button>
+          </div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+
+</html>

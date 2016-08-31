@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>stream</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <canvas id="output" width="320" height="240" style="border:solid;"></canvas>
+    <script>
+    window.onload = function() {
+      var context = document.getElementById("output").getContext("2d");
+      var socket = io();
+      var frame = null;
+
+      socket.on("image", (encoded) => {
+        frame = "data:image/jpeg;base64," + encoded;
+      });
+
+      socket.emit("ready");
+
+      setInterval(() => {
+        if (frame) {
+          var image = new Image();
+          image.src = frame;
+          try {
+            context.drawImage(image, 0, 0);
+          } catch (e) {
+            // ... suppress InvalidStateError
+          }
+        }
+      }, 1000 / 24);
+    };
+  </script>
+  </body>
+</html>

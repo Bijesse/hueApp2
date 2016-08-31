@@ -1,0 +1,16 @@
+header {
+      text-align: center;
+      background: url('http://dash.ga.co/assets/jeff-bg.png');
+      background-size: cover;
+      color: white;
+      height: 50%;
+    }
+#profile{
+  width: 30%;
+  margin: 20px 0px 0px 0px;
+  border-radius: 20px;
+
+}
+button{
+  margin: 5px 0px 5px 0px;
+}
