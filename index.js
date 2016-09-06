@@ -1,5 +1,15 @@
 // Keep your npm modules and other file dependencies at the top
 var express = require('express');
+var request = require('request');
+// var Tessel = require("tessel-io");
+// var five = require("johnny-five");
+
+var test = require('./test_export.js')
+
+// test = {
+// 	  myFunc: hello,
+// }
+
 
 // Create a new express instance and point to it using the variable app
 var app = express();
@@ -17,19 +27,20 @@ app.listen(1337, function () {
 	console.log('go to http://localhost:1337');
 });
 
-
 console.log("hi");
 
-// var Tessel = require("tessel-io");
-// var five = require("johnny-five");
-//
+test.helloFunc();
+test.goodbyeFunc();
+
 // var board = new five.Board({
 //   io: new Tessel()
 // });
-//
+// function say(){
+//   console.log( "hi console");
+// }
 // board.on("ready", () => {
 //   var led = new five.Led("a5");
 //   var button = new five.Button("a2");
-//   button.on("press", () => led.on());
+//   button.on("press", () => led.on() && say());
 //   button.on("release", () => led.off());
 // });

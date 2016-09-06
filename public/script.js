@@ -1,6 +1,6 @@
 $(document).ready(function(){
 console.log("works");
-    var request = "http://192.168.1.2/api/OGIOGrBPRyn1AutXp3tLkZFIbMETdMaUCIBBkCL7";
+    var hueURL = "http://192.168.1.2/api/OGIOGrBPRyn1AutXp3tLkZFIbMETdMaUCIBBkCL7";
   //  $.get(request, function(response){
   //     console.log(response.lights[1].state.on);
   //   });
@@ -12,7 +12,7 @@ console.log("works");
   //  contentType: 'application/json',
 $.ajax(
   {
-  url: request,
+  url: hueURL,
   type: "GET",
   success: function (response){
     $('#oneS').append('on: ' + response.lights[1].state.on + ' brightness: ' + response.lights[1].state.bri + ' hue: ' + response.lights[1].state.hue);
@@ -30,7 +30,7 @@ $.ajax(
 $('.on').click(function(){
   $.ajax(
    {
-    url: request + "/lights/"+this.className[0]+"/state",
+    url: hueURL + "/lights/"+this.className[0]+"/state",
     type: 'PUT',
     data: JSON.stringify({"on":true}),
     dataType: 'json',
@@ -48,7 +48,7 @@ $('.on').click(function(){
   $('.green').click(function(){
     $.ajax(
      {
-      url: request + "/lights/"+this.className[0]+"/state",
+      url: hueURL + "/lights/"+this.className[0]+"/state",
       type: 'PUT',
       data: JSON.stringify({"hue":25653}),
       dataType: 'json',
@@ -61,6 +61,33 @@ $('.on').click(function(){
       }
 
       });
+      $.ajax(
+       {
+        url: hueURL + "/lights/"+this.className[0]+"/state",
+        type: 'PUT',
+        data: JSON.stringify({"on":true}),
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function(data) {
+         console.log(data);
+        },
+        error: function (response) {
+          console.log(response);
+        }
+
+        });
     });
+
+    //function that will turn light on or off depending on its current state
+    function onOff(){
+     $.get(hueURL, function(response){
+        if(response.lights[1].state.on === true){
+          return JSON.stringify({"on":false});
+        }else{
+          return JSON.stringify({"on":true});
+        }
+      });
+
+     }
 
 });
